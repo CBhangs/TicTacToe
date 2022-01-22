@@ -49,3 +49,11 @@ Example: Connect Four - the other player has won or there are no possible plays 
 4. When all 9 squares are full, the game is over.
 
 5. First to 5 wins 
+
+## Languages used
+
+1. Javascript
+
+2. Css
+
+3. HTML
