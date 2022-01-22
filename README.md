@@ -1,4 +1,6 @@
 ### Project #1: The DOM
+![image](https://user-images.githubusercontent.com/94818557/150651233-86d4dcab-5d39-4305-a1bc-971cb855671b.png)
+
 
 ## Attendance
 There are no full day classes during project weeks, but we do expect you to be working on your project daily and be available during the usual class times (6:30pm - 10:45PM Eastern), for TA hours or any meetings with instructors as needed.
