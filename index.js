@@ -127,6 +127,8 @@ function playerOneInput(){
   let inputOne = document.createElement("INPUT");
   inputOne.setAttribute("type", "text");
   inputOne.innerHTML = "Enter Your Name"
+  inputOne.style.margin = "10px"
+  inputOne.style.borderRadius = "10px"
   root.append(inputOne)
 }
 
@@ -136,6 +138,8 @@ function playerTwoInput(){
   let inputTwo = document.createElement("INPUT");
   inputTwo.setAttribute("type", "text");
   inputTwo.innerHTML = "Enter Your Name"
+  inputTwo.style.margin = "10px"
+  inputTwo.style.borderRadius = "10px"
   root.append(inputTwo)
 }
 
