@@ -68,17 +68,89 @@ function landingPageBtn(){
 
   root.appendChild(btn)
 }  
+
 // build landing page
 function buildLandingPage(){
   clearRoot();
   landingPageTitle();
   rulesTitle();
   rulesList();
+  landingImage();
   landingPageBtn();
 }
 
-function buildPlayerInfoPage(){
-  clearRoot();
+// add image function 
+function landingImage(){
+  let root = getRoot();
+  let image = document.createElement("img")
+  image.src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5KPXNEbCS7I0BVGcDtpnCUxS3h64mA_GtqQ&usqp=CAU"
+  root.appendChild(image)
 }
 
+// calls the lnading page function
 buildLandingPage()
+
+
+// build player info page
+function buildPlayerInfoPage(){
+  clearRoot();
+  landingPageTitle();
+  playerOne();
+  playerOneInput();
+  playerOneBtn();
+  playerTwo();
+  playerTwoInput();
+  playerTwoBtn();
+}
+
+// create player one title
+function playerOne(){
+  let root = getRoot();
+  let h1 = document.createElement("h1")
+  h1.innerHTML = "Player One"
+  h1.style.fontStyle = "italic"
+  root.append(h1)
+}
+
+// create player two title
+function playerTwo(){
+  let root = getRoot();
+  let h1 = document.createElement("h1")
+  h1.innerHTML = "Player Two"
+  h1.style.fontStyle = "italic"
+  root.append(h1)
+}
+
+// input for player one
+function playerOneInput(){
+  let root = getRoot();
+  let inputOne = document.createElement("INPUT");
+  inputOne.setAttribute("type", "text");
+  inputOne.innerHTML = "Enter Your Name"
+  root.append(inputOne)
+}
+
+// input for player two
+function playerTwoInput(){
+  let root = getRoot();
+  let inputTwo = document.createElement("INPUT");
+  inputTwo.setAttribute("type", "text");
+  inputTwo.innerHTML = "Enter Your Name"
+  root.append(inputTwo)
+}
+
+// btn for player one name
+function playerOneBtn(){
+  let root = getRoot();
+  let playerOneButton = document.createElement("button")
+  playerOneButton.innerHTML = "Submit Name"
+  root.append(playerOneButton)
+}
+
+// btn for player two name
+function playerTwoBtn(){
+  let root = getRoot();
+  let playerTwoButton = document.createElement("button")
+  playerTwoButton.innerHTML = "Submit Name"
+  root.append(playerTwoButton)
+}
