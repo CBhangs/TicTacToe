@@ -144,6 +144,10 @@ function playerOneBtn(){
   let root = getRoot();
   let playerOneButton = document.createElement("button")
   playerOneButton.innerHTML = "Submit Name"
+  playerOneButton.style.margin = "auto"
+  playerOneButton.style.backgroundColor = "red" 
+  playerOneButton.style.color = "white"
+  playerOneButton.style.borderRadius = "10px"
   root.append(playerOneButton)
 }
 
@@ -152,5 +156,9 @@ function playerTwoBtn(){
   let root = getRoot();
   let playerTwoButton = document.createElement("button")
   playerTwoButton.innerHTML = "Submit Name"
+  playerTwoButton.style.margin = "auto"
+  playerTwoButton.style.backgroundColor = "red" 
+  playerTwoButton.style.color = "white"
+  playerTwoButton.style.borderRadius = "10px"
   root.append(playerTwoButton)
 }
