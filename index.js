@@ -87,8 +87,10 @@ function landingImage(){
   root.appendChild(image)
 }
 
-// calls the lnading page function
+// calls the landing page function
 buildLandingPage()
+
+// page 2 build 
 
 
 // build player info page
@@ -98,6 +100,7 @@ function buildPlayerInfoPage(){
   playerOne();
   playerOneInput();
   playerOneBtn();
+  background();
   playerTwo();
   playerTwoInput();
   playerTwoBtn();
@@ -126,7 +129,6 @@ function playerOneInput(){
   let root = getRoot();
   let inputOne = document.createElement("INPUT");
   inputOne.setAttribute("type", "text");
-  inputOne.innerHTML = "Enter Your Name"
   inputOne.style.margin = "10px"
   inputOne.style.borderRadius = "10px"
   root.append(inputOne)
@@ -137,7 +139,6 @@ function playerTwoInput(){
   let root = getRoot();
   let inputTwo = document.createElement("INPUT");
   inputTwo.setAttribute("type", "text");
-  inputTwo.innerHTML = "Enter Your Name"
   inputTwo.style.margin = "10px"
   inputTwo.style.borderRadius = "10px"
   root.append(inputTwo)
@@ -165,4 +166,14 @@ function playerTwoBtn(){
   playerTwoButton.style.color = "white"
   playerTwoButton.style.borderRadius = "10px"
   root.append(playerTwoButton)
+}
+
+// image for player info 
+function background(){
+  let root = getRoot();
+  let backgrd = document.createElement("h2")
+  let infoPic = document.createElement("img")
+  infoPic.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc_eJmXd0RPEBEuVtbgUOuNAKd3xURs-cWZg&usqp=CAU"
+  backgrd.appendChild(infoPic)
+  root.append(backgrd)
 }
