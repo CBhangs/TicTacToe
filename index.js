@@ -1,3 +1,8 @@
+// global name variables
+let player1, player2;
+
+let cory = 'hello my name is';
+
 // get root element 
 function getRoot(){
   let root = document.getElementById("root")
@@ -11,7 +16,7 @@ function clearRoot(){
 }
 
 // create title for landing page
-function landingPageTitle(){
+function pageTitle(){
   let root = getRoot();
   let h1 = document.createElement("h1")
   h1.innerHTML = "Tic Tac Toe"
@@ -20,7 +25,7 @@ function landingPageTitle(){
   root.append(h1)
 }
 
-// create title for rules
+// create title for rules()
 function rulesTitle(){
   let root = getRoot();
   let h2 = document.createElement("h2")
@@ -57,7 +62,7 @@ function rulesList(){
 function landingPageBtn(){
   let root = getRoot();
   let btn = document.createElement("button")
-  btn.innerText = "Start Game"
+  btn.innerHTML = "Start Game"
   btn.style.margin = "auto"
   btn.style.backgroundColor = "red" 
   btn.style.color = "white"
@@ -72,7 +77,7 @@ function landingPageBtn(){
 // build landing page
 function buildLandingPage(){
   clearRoot();
-  landingPageTitle();
+  pageTitle();
   rulesTitle();
   rulesList();
   landingImage();
@@ -96,14 +101,13 @@ buildLandingPage()
 // build player info page
 function buildPlayerInfoPage(){
   clearRoot();
-  landingPageTitle();
+  pageTitle(); 
   playerOne();
   playerOneInput();
-  playerOneBtn();
   background();
   playerTwo();
   playerTwoInput();
-  playerTwoBtn();
+  createSubmitButton();
 }
 
 // create player one title
@@ -128,7 +132,9 @@ function playerTwo(){
 function playerOneInput(){
   let root = getRoot();
   let inputOne = document.createElement("INPUT");
+  inputOne.setAttribute("id", "player1");
   inputOne.setAttribute("type", "text");
+  inputOne.setAttribute("placeholder", "Enter player 1 Name");
   inputOne.style.margin = "10px"
   inputOne.style.borderRadius = "10px"
   root.append(inputOne)
@@ -138,34 +144,12 @@ function playerOneInput(){
 function playerTwoInput(){
   let root = getRoot();
   let inputTwo = document.createElement("INPUT");
+  inputTwo.setAttribute("id", "player2");
   inputTwo.setAttribute("type", "text");
+  inputTwo.setAttribute("placeholder", "Enter Player 2 Name")
   inputTwo.style.margin = "10px"
   inputTwo.style.borderRadius = "10px"
   root.append(inputTwo)
-}
-
-// btn for player one name
-function playerOneBtn(){
-  let root = getRoot();
-  let playerOneButton = document.createElement("button")
-  playerOneButton.innerHTML = "Submit Name"
-  playerOneButton.style.margin = "auto"
-  playerOneButton.style.backgroundColor = "red" 
-  playerOneButton.style.color = "white"
-  playerOneButton.style.borderRadius = "10px"
-  root.append(playerOneButton)
-}
-
-// btn for player two name
-function playerTwoBtn(){
-  let root = getRoot();
-  let playerTwoButton = document.createElement("button")
-  playerTwoButton.innerHTML = "Submit Name"
-  playerTwoButton.style.margin = "auto"
-  playerTwoButton.style.backgroundColor = "red" 
-  playerTwoButton.style.color = "white"
-  playerTwoButton.style.borderRadius = "10px"
-  root.append(playerTwoButton)
 }
 
 // image for player info 
@@ -177,3 +161,60 @@ function background(){
   backgrd.appendChild(infoPic)
   root.append(backgrd)
 }
+
+// create submit button 
+function createSubmitButton(){
+  function collectNames(){
+    // get the elements
+    let playerOneInputElement = document.getElementById("player1");
+    let playerTwoInputElement = document.getElementById("player2");
+    // check length of inputs
+    let playerOneNameIsGreaterThan2 = playerOneInputElement.value.length > 2
+    let playerTwoNameIsGreaterThan2 = playerTwoInputElement.value.length > 2
+    // console.log(playerOneNameIsGreaterThan2, playerTwoNameIsGreaterThan2)
+    if (!playerOneNameIsGreaterThan2 || !playerTwoNameIsGreaterThan2){
+      playerOneInputElement.style.color = "red";
+      playerTwoInputElement.style.color = "red";
+      return 
+    } 
+    // check value/makes it lowercase compares both players name 
+    let playerOneInputValue = document.getElementById("player1").value.toLowerCase();
+    let playerTwoInputValue = document.getElementById("player2").value.toLowerCase();
+    if (playerOneInputValue === playerTwoInputValue){
+      playerOneInputElement.style.color = "red";
+      playerTwoInputElement.style.color = "red";
+      return
+   }
+    // check for numbers in name
+    let playerOneInputName = document.getElementById("player1").value;
+    let playerTwoInputName = document.getElementById("player2").value;
+
+    if (playerOneInputName.match(".*\\d.*") || playerTwoInputName.match(".*\\d.*")){
+      playerOneInputElement.style.color = "red";
+      playerTwoInputElement.style.color = "red";
+      return
+    }
+   
+
+    // build game page
+    buildGamePage()
+  }
+
+  let root = getRoot();
+  let submit = document.createElement("button")
+  submit.innerHTML = "Submit"
+  submit.style.margin = "auto"
+  submit.style.backgroundColor = "red" 
+  submit.style.color = "white"
+  submit.style.borderRadius = "10px"
+
+  submit.addEventListener("click", collectNames)
+
+  root.append(submit)
+}
+
+function buildGamePage() {
+  clearRoot();
+  pageTitle();
+}
+ 
