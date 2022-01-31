@@ -25,12 +25,13 @@ function pageTitle(){
   root.append(h1)
 }
 
+
 // create title for rules()
 function rulesTitle(){
   let root = getRoot();
   let h2 = document.createElement("h2")
   h2.innerHTML = "Rules of Tic Tac Toe"
-  h2.style.textAlign = "left"
+  h2.style.textAlign = "center"
   h2.style.fontSize = "30px"
   h2.style.color = "red"
   h2.style.textDecoration = "underline"
@@ -49,6 +50,7 @@ function rulesList(){
     "First to 5 wins"]
 
     rules.style.fontSize = "20px"
+    // rules.style.textAlign = "center"
 
   for (let rule of ruleList) {
     let newListItem = document.createElement("li")
@@ -171,7 +173,7 @@ function createSubmitButton(){
     // check length of inputs
     let playerOneNameIsGreaterThan2 = playerOneInputElement.value.length > 2
     let playerTwoNameIsGreaterThan2 = playerTwoInputElement.value.length > 2
-    // console.log(playerOneNameIsGreaterThan2, playerTwoNameIsGreaterThan2)
+    
     if (!playerOneNameIsGreaterThan2 || !playerTwoNameIsGreaterThan2){
       playerOneInputElement.style.color = "red";
       playerTwoInputElement.style.color = "red";
@@ -195,7 +197,6 @@ function createSubmitButton(){
       return
     }
    
-
     // build game page
     buildGamePage()
   }
@@ -216,5 +217,16 @@ function createSubmitButton(){
 function buildGamePage() {
   clearRoot();
   pageTitle();
+  createdBy();
 }
- 
+
+function createdBy(){
+  let root = getRoot();
+  let footer = document.createElement("footer")
+  footer.innerHTML = "Created By Cory H"
+  footer.style.color = "red"
+  footer.style.fontSize = "30px"
+  footer.style.textAlign = "center"
+  footer.style.fontStyle = "cantal"
+  root.append(footer)
+}
