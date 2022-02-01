@@ -1,5 +1,6 @@
 // global name variables
-let player1, player2;
+let playerOneName, playerTwoName;
+let whosTurnIsIt = "Player 1"
 
 // get root element 
 function getRoot(){
@@ -14,13 +15,24 @@ function clearRoot(){
 }
 
 // create title for landing page
-function pageTitle(){
+function pageTitle(addCreatedBy){
   let root = getRoot();
+  let headerContainer = document.createElement("div")
   let h1 = document.createElement("h1")
   h1.innerHTML = "Tic Tac Toe"
   h1.style.textAlign = "center"
   h1.style.fontSize = "70px"
-  root.append(h1)
+  headerContainer.append(h1)
+  if (addCreatedBy){
+    let h3 = document.createElement("h3")
+    h3.innerHTML = "Created By Cory H"
+    h3.style.color = "red"
+    h3.style.fontSize = "30px"
+    h3.style.textAlign = "center"
+    h3.style.fontStyle = "cantal"
+    headerContainer.append(h3)
+  }
+  root.append(headerContainer)
 }
 
 // create title for rules()
@@ -193,7 +205,9 @@ function createSubmitButton(){
       playerTwoInputElement.style.color = "red";
       return
     }
-   
+    // save names in global space 
+    playerOneName = playerOneInputName 
+    playerTwoName = playerTwoInputName
     // build game page
     buildGamePage()
   }
@@ -213,49 +227,116 @@ function createSubmitButton(){
 
 function buildGamePage() {
   clearRoot();
-  pageTitle();
-  createdBy();
-  gameInfo()
-  buildGameBored();
+  pageTitle(true);
+  buildGameContainer();
 }
 
-function createdBy(){
+function buildGameContainer(){
   let root = getRoot();
-  let h3 = document.createElement("h3")
-  h3.innerHTML = "Created By Cory H"
-  h3.style.color = "red"
-  h3.style.fontSize = "30px"
-  h3.style.textAlign = "center"
-  h3.style.fontStyle = "cantal"
-  root.append(h3)
+  let gameContainer = document.createElement("div")
+  gameInfo(gameContainer);
+  buildGameBored(gameContainer);
+  root.append(gameContainer)
 }
+
 // create player names wins and loses div
-function gameInfo(){
-  let root = getRoot();
-  let playerNames = document.createElement("div")
-  playerNames.className = "info"
-  let names = document.createElement("h1")
-  names.innerHTML = "Player 1 Name " + " Player 2 Name"
-  playerNames.append(names)
-  let wins = document.createElement("h2")
-  wins.innerHTML = "wins = " + " wins = "
-  playerNames.append(wins)
-  let loses = document.createElement("h3")
-  loses.innerHTML = "loses = " + " loses = "
-  playerNames.append(loses)
-  root.append(playerNames)
+function gameInfo(parentContainer){
+  let playerInfo = document.createElement("div")
+  playerInfo.className = "info"
+//player 1 div
+  let player1 = document.createElement("div")
+  player1.className = "p1"
+
+  let name1 = document.createElement("h1")
+  name1.innerHTML = playerOneName
+
+  //player 1 wins div
+  let player1Wins = document.createElement("div")
+  let wins1 = document.createElement("h1")
+  wins1.innerHTML = "wins = "
+  player1Wins.append(wins1)
+
+  // player 1 loses div
+  let player1Loses = document.createElement("div")
+  let loses1 = document.createElement("h1")
+  loses1.innerHTML = "loses = "
+  player1Loses.append(loses1)
+  
+  player1.append(name1)
+  player1.append(player1Wins)
+  player1.append(player1Loses)
+  playerInfo.append(player1)
+  parentContainer.append(playerInfo)
+
+  //player 2 div
+  let player2 = document.createElement("div")
+  player2.className = "p2"
+
+  let name2 = document.createElement("h1")
+  name2.innerHTML = playerTwoName
+
+  //player 2 wins div
+  let player2Wins = document.createElement("div")
+  let wins2 = document.createElement("h1")
+  wins2.innerHTML = "wins = "
+  player2Wins.append(wins2)
+
+  //player 2 loses div
+  let player2Loses = document.createElement("div")
+  let loses2 = document.createElement("h1")
+  loses2.innerHTML = "loses = "
+  player2Loses.append(loses2)
+  
+  player2.append(name2)
+  player2.append(player2Wins)
+  player2.append(player2Loses)
+  playerInfo.append(player2)
+  parentContainer.append(playerInfo)
 }
+
 
 // create game bored div
-function buildGameBored(){
-  let root = getRoot();
+function buildGameBored(parentContainer){
+  function handleClick(e) {
+    console.log(e.target)
+    console.log(e.target.id)
+    // stop outside div
+    if (e.target.className === "bored") {
+      return
+    }
+    // check whos turn it is
+    let isPlayerOnesTurn = whosTurnIsIt === "Player 1";
+    
+    // check if someone when here already
+    let isSpotTaken = e.target.style.backgroundColor
+    // update  if spot is not taken
+    if (!isSpotTaken) {
+      // is player one turn
+      if (isPlayerOnesTurn) {
+        e.target.style.backgroundColor = "red"
+        whosTurnIsIt = "Player 2"
+      } else {
+      // is player two turn
+        e.target.style.backgroundColor = "blue"
+        whosTurnIsIt = "Player 1";
+      }
+
+      // check for win state GOES HERE
+    }
+  }
+  // create game bored
   let gameBored = document.createElement('div')
   gameBored.className = "bored"
+
+  // add evt listener to game bored
+  gameBored.addEventListener("click", handleClick)
+
+  // add tiles to bored
   let div1 = document.createElement('div')
   div1.setAttribute("id", "1")
   gameBored.append(div1)
   div1.innerHTML = "1"
-
+  
   let div2 = document.createElement('div')
   div2.setAttribute("id", "2")
   gameBored.append(div2)
@@ -295,6 +376,6 @@ function buildGameBored(){
   div9.setAttribute("id", "9")
   gameBored.append(div9)
   div9.innerHTML = "9"
-  
-  root.append(gameBored)
+
+  parentContainer.append(gameBored)
 }
