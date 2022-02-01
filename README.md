@@ -28,16 +28,16 @@ A README.mdfile with explanations of the technologies used, the approach taken, 
 
 1. ## A win state - a way for the player to win the game
 
-Get three "x" or three "o" in a row or column
+Get three "X" or three "O" in a row or column
 
-3. ## A lose state - a way for the player to lose the game
+2. ## A lose state - a way for the player to lose the game
 
 When your opponite gets his/her x or o in a row or column
 When you run out of spaces to place your move
 
-4. A way to keep playing if the game is not over
+3. A way to keep playing if the game is not over
 
-5. Multiple rounds to play - a round must begin, end, and there must be a way to check if the game should continue or the overall game is won or lost
+4. Multiple rounds to play - a round must begin, end, and there must be a way to check if the game should continue or the overall game is won or lost
 - Example: Blackjack: a player takes turns playing a hand versus a computer - the player's hand can either win, lose or tie the dealer. If the player has enough money in their bankroll they can keep playing. A player must be able to win several rounds and increase their bankroll - Example: Connect Four: two (non-computer) players take turns adding chips to the board. The game will check if a player won or if the board is full and there are no more plays possible. A player gets four chips in a row (vertically or horizontally)- one person wins, one loses, there are no further plays in this case
 
 
