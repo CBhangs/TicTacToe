@@ -1,8 +1,6 @@
 // global name variables
 let player1, player2;
 
-let cory = 'hello my name is';
-
 // get root element 
 function getRoot(){
   let root = document.getElementById("root")
@@ -24,7 +22,6 @@ function pageTitle(){
   h1.style.fontSize = "70px"
   root.append(h1)
 }
-
 
 // create title for rules()
 function rulesTitle(){
@@ -218,15 +215,86 @@ function buildGamePage() {
   clearRoot();
   pageTitle();
   createdBy();
+  gameInfo()
+  buildGameBored();
 }
 
 function createdBy(){
   let root = getRoot();
-  let footer = document.createElement("footer")
-  footer.innerHTML = "Created By Cory H"
-  footer.style.color = "red"
-  footer.style.fontSize = "30px"
-  footer.style.textAlign = "center"
-  footer.style.fontStyle = "cantal"
-  root.append(footer)
+  let h3 = document.createElement("h3")
+  h3.innerHTML = "Created By Cory H"
+  h3.style.color = "red"
+  h3.style.fontSize = "30px"
+  h3.style.textAlign = "center"
+  h3.style.fontStyle = "cantal"
+  root.append(h3)
+}
+// create player names wins and loses div
+function gameInfo(){
+  let root = getRoot();
+  let playerNames = document.createElement("div")
+  playerNames.className = "info"
+  let names = document.createElement("h1")
+  names.innerHTML = "Player 1 Name " + " Player 2 Name"
+  playerNames.append(names)
+  let wins = document.createElement("h2")
+  wins.innerHTML = "wins = " + " wins = "
+  playerNames.append(wins)
+  let loses = document.createElement("h3")
+  loses.innerHTML = "loses = " + " loses = "
+  playerNames.append(loses)
+  root.append(playerNames)
+}
+
+// create game bored div
+function buildGameBored(){
+  let root = getRoot();
+  let gameBored = document.createElement('div')
+  gameBored.className = "bored"
+  let div1 = document.createElement('div')
+  div1.setAttribute("id", "1")
+  gameBored.append(div1)
+  div1.innerHTML = "1"
+
+  let div2 = document.createElement('div')
+  div2.setAttribute("id", "2")
+  gameBored.append(div2)
+  div2.innerHTML = "2"
+
+  let div3 = document.createElement('div')
+  div3.setAttribute("id", "3")
+  gameBored.append(div3)
+  div3.innerHTML = "3"
+
+  let div4 = document.createElement('div')
+  div4.setAttribute("id", "4")
+  gameBored.append(div4)
+  div4.innerHTML = "4"
+
+  let div5 = document.createElement('div')
+  div5.setAttribute("id", "5")
+  gameBored.append(div5)
+  div5.innerHTML = "5"
+
+  let div6 = document.createElement('div')
+  div6.setAttribute("id", "6")
+  gameBored.append(div6)
+  div6.innerHTML = "6"
+
+  let div7 = document.createElement('div')
+  div7.setAttribute("id", "7")
+  gameBored.append(div7)
+  div7.innerHTML = "7"
+
+  let div8 = document.createElement('div')
+  div8.setAttribute("id", "8")
+  gameBored.append(div8)
+  div8.innerHTML = "8"
+
+  let div9 = document.createElement('div')
+  div9.setAttribute("id", "9")
+  gameBored.append(div9)
+  div9.innerHTML = "9"
+  
+  root.append(gameBored)
 }
