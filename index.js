@@ -317,12 +317,12 @@ function buildGameBored(parentContainer){
     if (!isSpotTaken) {
       // is player one turn
       if (isPlayerOnesTurn) {
-        e.target.style.backgroundColor = "red"
+        e.target.style.backgroundColor = "blue"
         checkWinState();
         whosTurnIsIt = "Player 2"
       } else {
       // is player two turn
-        e.target.style.backgroundColor = "blue"
+        e.target.style.backgroundColor = "red"
         checkWinState();
         whosTurnIsIt = "Player 1";
       }
