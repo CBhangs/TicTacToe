@@ -1,5 +1,9 @@
 // global name variables
 let playerOneName, playerTwoName;
+let playerOneWins = 0
+let playerOneLoses = 0
+let playerTwoWins = 0
+let playerTwoLoses = 0
 let whosTurnIsIt = "Player 1"
 
 // get root element 
@@ -253,13 +257,13 @@ function gameInfo(parentContainer){
   //player 1 wins div
   let player1Wins = document.createElement("div")
   let wins1 = document.createElement("h1")
-  wins1.innerHTML = "wins = "
+  wins1.innerHTML = "Wins = " + playerOneWins
   player1Wins.append(wins1)
 
   // player 1 loses div
   let player1Loses = document.createElement("div")
   let loses1 = document.createElement("h1")
-  loses1.innerHTML = "loses = "
+  loses1.innerHTML = "Loses = " + playerOneLoses
   player1Loses.append(loses1)
   
   player1.append(name1)
@@ -278,13 +282,13 @@ function gameInfo(parentContainer){
   //player 2 wins div
   let player2Wins = document.createElement("div")
   let wins2 = document.createElement("h1")
-  wins2.innerHTML = "wins = "
+  wins2.innerHTML = "Wins = " + playerTwoWins
   player2Wins.append(wins2)
 
   //player 2 loses div
   let player2Loses = document.createElement("div")
   let loses2 = document.createElement("h1")
-  loses2.innerHTML = "loses = "
+  loses2.innerHTML = "Loses = " + playerTwoLoses
   player2Loses.append(loses2)
   
   player2.append(name2)
@@ -314,14 +318,14 @@ function buildGameBored(parentContainer){
       // is player one turn
       if (isPlayerOnesTurn) {
         e.target.style.backgroundColor = "red"
+        checkWinState();
         whosTurnIsIt = "Player 2"
       } else {
       // is player two turn
         e.target.style.backgroundColor = "blue"
+        checkWinState();
         whosTurnIsIt = "Player 1";
       }
-
-      // check for win state GOES HERE
     }
   }
   // create game bored
@@ -378,4 +382,73 @@ function buildGameBored(parentContainer){
   div9.innerHTML = "9"
 
   parentContainer.append(gameBored)
+}
+
+function checkWinState(){
+  function resetGame(){
+    console.log(whosTurnIsIt)
+    // log wins and loses
+    let didPlayerOneWin = whosTurnIsIt === "Player 1";
+    if (didPlayerOneWin){
+      playerOneWins++ 
+      playerTwoLoses++
+    } else {
+      playerTwoWins++
+      playerOneLoses++
+    } 
+      console.log({
+      playerOneWins,
+      playerOneLoses,
+      playerTwoWins,
+      playerTwoLoses
+    })
+    // restart game
+    buildGamePage();
+  }
+  // check if anyone has 3 in row 
+  
+  let pos1 = document.getElementById("1").style.backgroundColor
+  let pos2 = document.getElementById("2").style.backgroundColor
+  let pos3 = document.getElementById("3").style.backgroundColor
+  let pos4 = document.getElementById("4").style.backgroundColor
+  let pos5 = document.getElementById("5").style.backgroundColor
+  let pos6 = document.getElementById("6").style.backgroundColor
+  let pos7 = document.getElementById("7").style.backgroundColor
+  let pos8 = document.getElementById("8").style.backgroundColor
+  let pos9 = document.getElementById("9").style.backgroundColor
+
+  // check pos 1,2,3 
+  // make sure pos1 2 3 are not set to defualt value
+  // make sure they are not the same 
+  if(pos1 !== "" && pos2  !== "" && pos3 !== "" && pos1 === pos2 && pos1 === pos3){
+    resetGame();
+  }
+  // check pos 4,5,6 
+  if(pos4 !== "" && pos5  !== "" && pos6 !== "" && pos4 === pos5 && pos4 === pos6){
+    resetGame();
+  }
+  // check pos 7,8,9
+  if(pos7 !== "" && pos8  !== "" && pos9 !== "" && pos7 === pos8 && pos7 === pos9){
+    resetGame();
+  }
+  // check pos 1,4,7
+  if(pos1 !== "" && pos4  !== "" && pos7 !== "" && pos1 === pos4 && pos1 === pos7){
+    resetGame();
+  }
+  // check pos 2,5,8
+  if(pos2 !== "" && pos5  !== "" && pos8 !== "" && pos2 === pos5 && pos2 === pos8){
+    resetGame();
+  }
+  //check pos 3,6,9
+  if(pos3 !== "" && pos6  !== "" && pos9 !== "" && pos3 === pos6 && pos3 === pos9){
+    resetGame();
+  }
+  // check pos 1,5,9
+  if(pos1 !== "" && pos5  !== "" && pos9 !== "" && pos1 === pos5 && pos1 === pos9){
+    resetGame();
+  }
+  // check pos 3,5,7
+  if(pos3 !== "" && pos5  !== "" && pos7 !== "" && pos3 === pos5 && pos3 === pos7){
+    resetGame();
+  }
 }
