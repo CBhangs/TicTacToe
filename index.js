@@ -318,11 +318,13 @@ function buildGameBored(parentContainer){
       // is player one turn
       if (isPlayerOnesTurn) {
         e.target.style.backgroundColor = "blue"
+        e.target.innerHTML = "X"
         checkWinState();
         whosTurnIsIt = "Player 2"
       } else {
       // is player two turn
         e.target.style.backgroundColor = "red"
+        e.target.innerHTML = "O"
         checkWinState();
         whosTurnIsIt = "Player 1";
       }
@@ -338,46 +340,55 @@ function buildGameBored(parentContainer){
   // add tiles to bored
   let div1 = document.createElement('div')
   div1.setAttribute("id", "1")
+  div1.style.border = "solid", "black"
   gameBored.append(div1)
   div1.innerHTML = "1"
   
   let div2 = document.createElement('div')
   div2.setAttribute("id", "2")
+  div2.style.border = "solid", "black"
   gameBored.append(div2)
   div2.innerHTML = "2"
 
   let div3 = document.createElement('div')
   div3.setAttribute("id", "3")
+  div3.style.border = "solid", "black"
   gameBored.append(div3)
   div3.innerHTML = "3"
 
   let div4 = document.createElement('div')
   div4.setAttribute("id", "4")
+  div4.style.border = "solid", "black"
   gameBored.append(div4)
   div4.innerHTML = "4"
 
   let div5 = document.createElement('div')
   div5.setAttribute("id", "5")
+  div5.style.border = "solid", "black"
   gameBored.append(div5)
   div5.innerHTML = "5"
 
   let div6 = document.createElement('div')
   div6.setAttribute("id", "6")
+  div6.style.border = "solid", "black"
   gameBored.append(div6)
   div6.innerHTML = "6"
 
   let div7 = document.createElement('div')
   div7.setAttribute("id", "7")
+  div7.style.border = "solid", "black"
   gameBored.append(div7)
   div7.innerHTML = "7"
 
   let div8 = document.createElement('div')
   div8.setAttribute("id", "8")
+  div8.style.border = "solid", "black"
   gameBored.append(div8)
   div8.innerHTML = "8"
 
   let div9 = document.createElement('div')
   div9.setAttribute("id", "9")
+  div9.style.border = "solid", "black"
   gameBored.append(div9)
   div9.innerHTML = "9"
 
